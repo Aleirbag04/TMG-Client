@@ -39,7 +39,7 @@ const Form = () => {
     e.preventDefault();
 
     if (validate) {
-      axios.post("https://tmg-form-api.onrender.com/", formData).then((res) => {
+      axios.post("https://tmg-form-api.onrender.com//api/v1/data", formData).then((res) => {
         console.log(res);
         openModal();
       });
