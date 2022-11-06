@@ -19,12 +19,12 @@ const Form = () => {
   const [open, setOpen] = useState(false);
 
   const validate = () => {
-    if (formData.name === undefined) {
-      setErrors({ ...errors, name: "Name is required" });
+    if (formData.firstName === undefined) {
+      setErrors({ ...errors, firstName: "Name is required" });
       return false;
     }
-    if (formData.lastname === undefined) {
-      setErrors({ ...errors, lastname: "Last name is required" });
+    if (formData.lastName === undefined) {
+      setErrors({ ...errors, lastName: "Last name is required" });
       return false;
     }
 
@@ -33,17 +33,21 @@ const Form = () => {
 
   const openModal = () => {
     setOpen(true);
-    console.log("openModal");
   };
   const onSubmit =  (e) => {
     e.preventDefault();
 
     if (validate) {
       axios.post("https://tmg-form-api.onrender.com/api/v1/data", formData).then((res) => {
-        console.log(res);
         openModal();
       });
     }
+    formData.firstName = "";
+    formData.lastName = "";
+    formData.email = "";
+    formData.contactNumber = "";
+    formData.message = "";
+
   };
 
   return (
@@ -55,7 +59,7 @@ const Form = () => {
         marginTop={5}
         direction={{ base: "column", md: "column" }}
       >
-        <FormControl isRequired isInvalid={"name" in errors}>
+        <FormControl isRequired isInvalid={"firstName" in errors}>
           <FormControl.Label
             _text={{
               color: "muted.800",
@@ -67,7 +71,7 @@ const Form = () => {
           </FormControl.Label>
           <Input
             placeholder="John"
-            onChangeText={(value) => setData({ ...formData, name: value })}
+            onChangeText={(value) => setData({ ...formData, firstName: value })}
             marginBottom={3}
             color="muted.800"
             fontFamily="Open Sans"
@@ -79,7 +83,7 @@ const Form = () => {
             </FormControl.ErrorMessage>
           ) : null}
         </FormControl>
-        <FormControl isRequired isInvalid={"lastname" in errors}>
+        <FormControl isRequired isInvalid={"lastName" in errors}>
           <FormControl.Label
             _text={{
               color: "muted.800",
@@ -91,13 +95,13 @@ const Form = () => {
           </FormControl.Label>
           <Input
             placeholder="Doe"
-            onChangeText={(value) => setData({ ...formData, lastname: value })}
+            onChangeText={(value) => setData({ ...formData, lastName: value })}
             marginBottom={3}
             color="muted.800"
             fontFamily="Open Sans"
             fontSize="sm"
           />
-          {"lastname" in errors ? (
+          {"lastName" in errors ? (
             <FormControl.ErrorMessage>
               Last name is required
             </FormControl.ErrorMessage>
@@ -139,7 +143,7 @@ const Form = () => {
           </FormControl.Label>
           <Input
             placeholder="+1 123 456 7890"
-            onChangeText={(value) => setData({ ...formData, phone: value })}
+            onChangeText={(value) => setData({ ...formData, contactNumber: value })}
             marginBottom={3}
             color="muted.800"
             fontFamily="Open Sans"
@@ -184,10 +188,12 @@ const Form = () => {
       <Modal
         isOpen={open}
         onClose={() => setOpen(false)}
-        safeAreaTop={true}
+        // safeAreaTop={true}
         marginTop={150}
         marginBottom={"auto"}
         justifyContent="flex-start"
+
+
       >
         <Modal.Content
           maxWidth="400px"
