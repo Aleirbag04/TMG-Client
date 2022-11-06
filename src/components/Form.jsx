@@ -42,8 +42,9 @@ const Form = () => {
         openModal();
       });
     }
-    // clear form
+    // clear form inputs
     setData({});
+
 
 
   };
@@ -70,6 +71,7 @@ const Form = () => {
           <Input
             placeholder="John"
             onChangeText={(value) => setData({ ...formData, firstName: value })}
+            value={formData.firstName}
             marginBottom={3}
             color="muted.800"
             fontFamily="Open Sans"
@@ -95,6 +97,7 @@ const Form = () => {
             placeholder="Doe"
             onChangeText={(value) => setData({ ...formData, lastName: value })}
             marginBottom={3}
+            value={formData.lastName}
             color="muted.800"
             fontFamily="Open Sans"
             fontSize="sm"
@@ -119,6 +122,7 @@ const Form = () => {
             placeholder="doe@gmail.com"
             onChangeText={(value) => setData({ ...formData, email: value })}
             marginBottom={3}
+            value={formData.email}
             color="muted.800"
             fontFamily="Open Sans"
             fontSize="sm"
@@ -143,6 +147,7 @@ const Form = () => {
             placeholder="+1 123 456 7890"
             onChangeText={(value) => setData({ ...formData, contactNumber: value })}
             marginBottom={3}
+            value={formData.contactNumber}
             color="muted.800"
             fontFamily="Open Sans"
             fontSize="sm"
@@ -163,6 +168,7 @@ const Form = () => {
             onChangeText={(value) => setData({ ...formData, message: value })}
             color="muted.800"
             fontFamily="Open Sans"
+            value={formData.message}
             fontSize="sm"
           />
         </FormControl>
