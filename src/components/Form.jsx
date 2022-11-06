@@ -16,7 +16,7 @@ import logo from "../logo.svg";
 const Form = () => {
   const [formData, setData] = useState({});
   const [errors, setErrors] = useState({});
-  const [open, setOpen] = useState(false);
+  const [ open, setOpen ] = useState(false);
 
   const validate = () => {
     if (formData.firstName === undefined) {
@@ -192,6 +192,7 @@ const Form = () => {
         marginTop={150}
         marginBottom={"auto"}
         justifyContent="flex-start"
+        backgroundColor={"white"}
 
 
       >
@@ -200,6 +201,7 @@ const Form = () => {
           alignItems="center"
           justifyContent="center"
           padding={10}
+           backgroundColor={"white"}
         >
           <Modal.CloseButton />
 
@@ -211,7 +213,9 @@ const Form = () => {
             alt="The Mortgage Group logo"
           />
 
-          <Modal.Body>
+          <Modal.Body
+             backgroundColor={"white"}
+          >
             <Text color="muted.800" fontSize="lg" fontFamily="Open Sans">
               Thank you!
             </Text>
