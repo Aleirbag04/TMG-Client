@@ -192,7 +192,7 @@ const Form = () => {
         marginTop={150}
         marginBottom={"auto"}
         justifyContent="flex-start"
-        backgroundColor={"white"}
+        // backgroundColor={"white"}
 
 
       >
