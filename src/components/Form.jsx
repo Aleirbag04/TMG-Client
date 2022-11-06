@@ -42,11 +42,9 @@ const Form = () => {
         openModal();
       });
     }
-    formData.firstName = "";
-    formData.lastName = "";
-    formData.email = "";
-    formData.contactNumber = "";
-    formData.message = "";
+    // clear form
+    setData({});
+
 
   };
 
