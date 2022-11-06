@@ -81,9 +81,11 @@ const Form = () => {
         </FormControl>
         <FormControl isRequired isInvalid={"lastname" in errors}>
           <FormControl.Label
-            color="muted.800"
-            fontFamily="Open Sans"
-            fontSize="sm"
+            _text={{
+              color: "muted.800",
+              fontFamily: "Open Sans",
+              fontSize: "sm",
+            }}
           >
             Last name
           </FormControl.Label>
