@@ -10,13 +10,19 @@ import {
   VStack
 } from "native-base";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import logo from "../logo.svg";
 
 const Form = () => {
   const [formData, setData] = useState({});
   const [errors, setErrors] = useState({});
   const [ open, setOpen ] = useState(false);
+  const firstName = useRef(null);
+  const lastName = useRef(null);
+  const email = useRef(null);
+  const contactNumber = useRef(null);
+  const message = useRef(null);
+
 
   const validate = () => {
     if (formData.firstName === undefined) {
@@ -44,11 +50,13 @@ const Form = () => {
     }
     // clear form inputs
     setData({});
+    e.target.reset();
   };
 
   const closeModal = () => {
     setOpen(false);
   };
+
 
   return (
     <>
@@ -70,7 +78,7 @@ const Form = () => {
             Name
           </FormControl.Label>
           <Input
-
+            ref={firstName}
             onChangeText={(value) => setData({ ...formData, firstName: value })}
             value={formData.firstName}
             marginBottom={3}
@@ -95,7 +103,7 @@ const Form = () => {
             Last name
           </FormControl.Label>
           <Input
-
+            ref={lastName}
             onChangeText={(value) => setData({ ...formData, lastName: value })}
             marginBottom={3}
             value={formData.lastName}
@@ -120,7 +128,7 @@ const Form = () => {
             Email
           </FormControl.Label>
           <Input
-
+            ref={email}
             onChangeText={(value) => setData({ ...formData, email: value })}
             marginBottom={3}
             value={formData.email}
@@ -145,7 +153,7 @@ const Form = () => {
             Phone number
           </FormControl.Label>
           <Input
-
+            ref={contactNumber}
             onChangeText={(value) => setData({ ...formData, contactNumber: value })}
             marginBottom={3}
             value={formData.contactNumber}
@@ -165,7 +173,7 @@ const Form = () => {
             Message to the host
           </FormControl.Label>
           <TextArea
-
+            ref={message}
             onChangeText={(value) => setData({ ...formData, message: value })}
             color="muted.800"
             fontFamily="Open Sans"
