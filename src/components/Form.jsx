@@ -44,9 +44,10 @@ const Form = () => {
     }
     // clear form inputs
     setData({});
+  };
 
-
-
+  const closeModal = () => {
+    setOpen(false);
   };
 
   return (
@@ -58,7 +59,7 @@ const Form = () => {
         marginTop={5}
         direction={{ base: "column", md: "column" }}
       >
-        <FormControl isRequired isInvalid={"firstName" in errors}>
+        <FormControl isRequired isInvalid={"firstName" in errors} >
           <FormControl.Label
             _text={{
               color: "muted.800",
@@ -69,7 +70,7 @@ const Form = () => {
             Name
           </FormControl.Label>
           <Input
-            placeholder="John"
+
             onChangeText={(value) => setData({ ...formData, firstName: value })}
             value={formData.firstName}
             marginBottom={3}
@@ -94,7 +95,7 @@ const Form = () => {
             Last name
           </FormControl.Label>
           <Input
-            placeholder="Doe"
+
             onChangeText={(value) => setData({ ...formData, lastName: value })}
             marginBottom={3}
             value={formData.lastName}
@@ -119,7 +120,7 @@ const Form = () => {
             Email
           </FormControl.Label>
           <Input
-            placeholder="doe@gmail.com"
+
             onChangeText={(value) => setData({ ...formData, email: value })}
             marginBottom={3}
             value={formData.email}
@@ -144,7 +145,7 @@ const Form = () => {
             Phone number
           </FormControl.Label>
           <Input
-            placeholder="+1 123 456 7890"
+
             onChangeText={(value) => setData({ ...formData, contactNumber: value })}
             marginBottom={3}
             value={formData.contactNumber}
@@ -164,7 +165,7 @@ const Form = () => {
             Message to the host
           </FormControl.Label>
           <TextArea
-            placeholder="Hi, I would like to..."
+
             onChangeText={(value) => setData({ ...formData, message: value })}
             color="muted.800"
             fontFamily="Open Sans"
@@ -191,7 +192,7 @@ const Form = () => {
 
       <Modal
         isOpen={open}
-        onClose={() => setOpen(false)}
+        onClose={closeModal}
         // safeAreaTop={true}
         marginTop={150}
         marginBottom={"auto"}
