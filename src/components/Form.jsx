@@ -50,7 +50,11 @@ const Form = () => {
     }
     // clear form inputs
     setData({});
-    e.target.reset();
+    firstName.current.clear();
+    lastName.current.clear();
+    email.current.clear();
+    contactNumber.current.clear();
+    message.current.clear();
   };
 
   const closeModal = () => {
